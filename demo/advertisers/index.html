@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Advertisers YoY · demo</title>
+<meta name="description" content="Anonymised advertiser-spend dashboard in Streamlit (YoY leaderboard, market decomposition, concentration, outlook), running in the browser on simulated data.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.9.2/build/stlite.css">
+<style>
+  body { margin: 0; background: #f3efe6; font: 14px/1.5 "IBM Plex Mono", ui-monospace, monospace; color: #1a1a17; }
+  .bar { display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline; padding: 12px 16px; border-bottom: 1px solid #d8d2c6; }
+  .bar a { color: inherit; }
+  .bar span { color: #6d6a63; }
+  #loading { padding: 48px 16px; color: #6d6a63; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <a href="../../#seznam">← Magdaléna Ondrušková</a>
+    <span>Streamlit running in your browser through stlite (Pyodide). The first load takes a little while. All advertisers and amounts are simulated.</span>
+    <a href="app.py">app.py</a>
+  </div>
+  <div id="root"><p id="loading">Starting Python in the browser…</p></div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.9.2/build/stlite.js";
+    document.getElementById("loading").remove();
+    mount({
+      requirements: ["plotly"],
+      entrypoint: "app.py",
+      files: { "app.py": { url: "./app.py" } },
+      streamlitConfig: {
+        "theme.base": "light",
+        "theme.primaryColor": "#0063e8",
+        "theme.backgroundColor": "#ffffff",
+        "theme.secondaryBackgroundColor": "#fafafa",
+        "theme.textColor": "#272727",
+        "theme.borderColor": "#dfdfdf",
+        "theme.baseRadius": "4px",
+        "client.toolbarMode": "viewer",
+      },
+    }, document.getElementById("root"));
+  </script>
+</body>
+</html>
