@@ -187,7 +187,8 @@
   .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top left; border: 1px solid var(--rule); background: #fff; cursor: zoom-in; transition: opacity .2s; }
   .gallery img:hover { opacity: .85; }
   .gallery figcaption { margin-top: 6px; color: var(--muted); font-size: 11.5px; }
-  @media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .gallery.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  @media (max-width: 860px) { .gallery, .gallery.g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
   /* ---------- thesis directions ---------- */
   .directions { display: grid; grid-template-columns: var(--side) minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); }
@@ -209,7 +210,7 @@
   .refs .who { margin: 0; font-size: 15px; color: var(--muted); }
   .refs .who b { color: var(--ink); font-weight: 500; }
   .refs .where { margin: 2px 0 0; font-size: 15px; }
-  .refs .links { margin-top: 8px; }
+  .refs .links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 18px; }
   .refs details { margin-top: 8px; }
   .refs summary { cursor: pointer; color: var(--muted); list-style: none; }
   .refs summary::-webkit-details-marker { display: none; }
@@ -331,7 +332,7 @@
       <span class="key"><i class="k-closed"></i><span lang="en">closed</span><span lang="sk">uzavreté</span></span>
       <span class="key"><i class="k-up"></i><span lang="en">gains traffic</span><span lang="sk">pribudne doprava</span></span>
       <span class="key"><i class="k-down"></i><span lang="en">loses traffic</span><span lang="sk">ubudne doprava</span></span>
-      <span class="source"><span lang="en">change &gt; 1,000 vehicles/day · see</span><span lang="sk">zmena &gt; 1 000 vozidiel/deň · viď</span> <a href="#closures">II.3</a></span>
+      <span class="source"><span lang="en">change &gt; 1,000 vehicles/day · see</span><span lang="sk">zmena &gt; 1 000 vozidiel/deň · viď</span> <a href="#closures">II.2</a></span>
     </figcaption>
   </figure>
 
@@ -503,14 +504,14 @@
         <h4><span lang="en">Making heterogeneous data fit</span><span lang="sk">Spájanie heterogénnych dát</span></h4>
         <p lang="en">Waze reports, police accident records, the national closure register and traffic counts all describe the same streets, in different formats, coordinate systems, time resolutions and meanings. I work on aligning them in space and time, resolving duplicates and knowing how far each source can be trusted.</p>
         <p lang="sk">Hlásenia z Waze, policajné záznamy o nehodách, celoštátny register uzávierok aj sčítanie dopravy opisujú tie isté ulice, no v rôznych formátoch, súradnicových systémoch, časovom rozlíšení a s rôznym významom. Venujem sa ich zosúladeniu v priestore a čase, riešeniu duplicít a tomu, nakoľko sa dá ktorému zdroju veriť.</p>
-        <p class="see mono"><span lang="en">see</span><span lang="sk">viď</span> <a href="#analyticity">II.2</a> · <a href="#annotate">II.4</a></p>
+        <p class="see mono"><span lang="en">see</span><span lang="sk">viď</span> <a href="#analyticity">II.1</a> · <a href="#annotate">II.3</a></p>
       </article>
       <article>
         <span class="letter">B</span>
         <h4><span lang="en">What it does to traffic</span><span lang="sk">Dopady na dopravu</span></h4>
         <p lang="en">Models and analyses of what changes when something happens on the network: where traffic goes when a street closes, where and why accidents cluster, how congestion behaves before and after. Some of it is simulation; much of it is careful analysis of what was actually observed.</p>
         <p lang="sk">Modely a analýzy toho, čo sa zmení, keď sa v sieti niečo stane: kam ide doprava pri uzávierke, kde a prečo sa hromadia nehody, ako sa správajú zápchy pred a po. Časť je simulácia, veľa je dôkladná analýza toho, čo sa naozaj pozorovalo.</p>
-        <p class="see mono"><span lang="en">see</span><span lang="sk">viď</span> <a href="#waze">II.1</a> · <a href="#closures">II.3</a></p>
+        <p class="see mono"><span lang="en">see</span><span lang="sk">viď</span> <a href="#analyticity">II.1</a> · <a href="#closures">II.2</a></p>
       </article>
     </div>
 
@@ -520,69 +521,62 @@
         <h3><span lang="en">What I built, and with whom</span><span lang="sk">Čo som postavila a s kým</span></h3>
       </div>
 
-      <article class="case" id="waze">
-        <dl class="mono">
-          <div><dt><span lang="en">When</span><span lang="sk">Kedy</span></dt><dd>2022 – 2024</dd></div>
-          <div><dt><span lang="en">My part</span><span lang="sk">Moja úloha</span></dt><dd><span lang="en">Everything: my master's thesis, with the City of Brno</span><span lang="sk">Celé: moja diplomovka, s mestom Brno</span></dd></div>
-          <div><dt><span lang="en">Awards</span><span lang="sk">Ocenenia</span></dt><dd><span lang="en">Dean's Prize; Excel@FIT 2024 public prize</span><span lang="sk">Cena dekana; Cena verejnosti Excel@FIT 2024</span></dd></div>
-          <div><dt>AI</dt><dd><span class="stamp"><span lang="en">none</span><span lang="sk">bez AI</span></span></dd></div>
-          <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="https://data.brno.cz/apps/70b6c168c69e4955a354622b3e92dd49/explore">data.brno.cz</a><a href="https://github.com/analyticity/waze-data-analysis">GitHub</a><a href="https://doi.org/10.1109/SCSP65598.2025.11037686">SCSP 2025</a></dd></div>
-        </dl>
-        <div class="main">
-          <span class="no">II.1</span>
-          <h4><span lang="en">Which street is that jam on?</span><span lang="sk">Na ktorej ulici je tá zápcha?</span></h4>
-          <p class="lede" lang="en">A web app that maps every Waze jam and alert in Brno to the city's own street segments, so you can ask what happened on one street or route over a whole year. Published by the city on data.brno.cz.</p>
-          <p class="lede" lang="sk">Webová aplikácia, ktorá každú zápchu a hlásenie z Waze v Brne priradí k úsekom mestskej uličnej siete, takže sa dá opýtať, čo sa za celý rok dialo na jednej ulici alebo trase. Mesto ju zverejnilo na data.brno.cz.</p>
-          <figure class="thumb">
-            <img src="assets/waze-app.jpg" alt="Waze Data Analysis app on data.Brno: map of Brno with street segments coloured by congestion and clusters of jam counts." loading="lazy" width="651" height="431">
-          </figure>
-          <details class="more">
-            <summary><span class="closed-label"><span lang="en">Read more</span><span lang="sk">Čítať viac</span></span><span class="open-label"><span lang="en">Show less</span><span lang="sk">Zobraziť menej</span></span></summary>
-            <div>
-              <p lang="en">Brno receives a constant stream of jams and alerts from Waze through the Waze for Cities programme. The data are rich but awkward: a jam is a line drawn by an app, not a street in the city's register. I matched every event to segments of the municipal street network and built the app on top: pick a street or a route between two places, choose any window in the past year, and see the jams, delays and incidents there.</p>
-              <p lang="sk">Brno dostáva cez program Waze for Cities nepretržitý prúd zápch a hlásení. Dáta sú bohaté, ale nepraktické: zápcha je čiara z aplikácie, nie ulica z mestského registra. Každú udalosť som priradila k úsekom mestskej siete a nad tým postavila aplikáciu: vyberiete ulicu alebo trasu, zvolíte obdobie z posledného roka a uvidíte tamojšie zápchy, zdržania a nehody.</p>
-              <p lang="en">It became my master's thesis, won the Dean's Prize and the Professional Public Prize at Excel@FIT 2024, and the matching method became my first conference paper. Code and text were written without AI assistants.</p>
-              <p lang="sk">Stala sa z nej moja diplomovka, získala Cenu dekana a Cenu odbornej verejnosti na Excel@FIT 2024 a metóda párovania sa stala mojím prvým konferenčným článkom. Kód aj text vznikli bez AI asistentov.</p>
-              <figure>
-                <img src="assets/waze-route.jpg" alt="A route between two points in Brno, coloured by congestion, with Waze alerts along it." loading="lazy" width="738" height="359">
-                <figcaption class="mono"><span lang="en">Congestion and alerts along a chosen route.</span><span lang="sk">Zápchy a hlásenia na zvolenej trase.</span></figcaption>
-              </figure>
-            </div>
-          </details>
-        </div>
-      </article>
-
       <article class="case" id="analyticity">
         <dl class="mono">
           <div><dt><span lang="en">When</span><span lang="sk">Kedy</span></dt><dd>2022 – <span lang="en">now</span><span lang="sk">teraz</span></dd></div>
-          <div><dt><span lang="en">My part</span><span lang="sk">Moja úloha</span></dt><dd><span lang="en">Started it; core API, data model, direction. Most new parts are students' theses.</span><span lang="sk">Založila som ho; jadro API, dátový model, smerovanie. Väčšina nových častí sú práce študentov.</span></dd></div>
-          <div><dt><span lang="en">Platform stack</span><span lang="sk">Technológie platformy</span></dt><dd>FastAPI, PostgreSQL, TimescaleDB, PostGIS, Kafka, Quarkus, React, Docker</dd></div>
-          <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="https://dexter.fit.vutbr.cz/analyticity/brno/map?from=2026-07-10&amp;to=2026-07-13&amp;comparison=lastyear"><span lang="en">Live app (Brno)</span><span lang="sk">Živá aplikácia (Brno)</span></a><a href="https://github.com/analyticity">GitHub</a></dd></div>
+          <div><dt><span lang="en">My part</span><span lang="sk">Moja úloha</span></dt><dd><span lang="en">Founded and lead it: API, data model, running it in production, case studies, documentation. Several parts are theses I supervised.</span><span lang="sk">Založila som ho a vediem ho: API, dátový model, prevádzka, prípadové štúdie, dokumentácia. Viaceré časti sú práce študentov, ktoré som viedla.</span></dd></div>
+          <div><dt><span lang="en">Awards</span><span lang="sk">Ocenenia</span></dt><dd><span lang="en">Master's thesis: Dean's Prize; Excel@FIT 2024 public prize</span><span lang="sk">Diplomovka: Cena dekana; Cena verejnosti Excel@FIT 2024</span></dd></div>
+          <div><dt><span lang="en">Platform stack</span><span lang="sk">Technológie platformy</span></dt><dd>FastAPI, React, TypeScript, Leaflet, Quarkus, Kafka (Redpanda), PostgreSQL, TimescaleDB, PostGIS, Docker</dd></div>
+          <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="https://dexter.fit.vutbr.cz/analyticity/brno/map"><span lang="en">Live app (Brno)</span><span lang="sk">Živá aplikácia (Brno)</span></a><a href="https://dexter.fit.vutbr.cz/analyticity/brno/case-studies/pisarky"><span lang="en">Case study</span><span lang="sk">Prípadová štúdia</span></a><a href="https://github.com/analyticity">GitHub</a><a href="https://doi.org/10.1109/SCSP65598.2025.11037686">SCSP 2025</a></dd></div>
         </dl>
         <div class="main">
-          <span class="no">II.2</span>
+          <span class="no">II.1</span>
           <h4><span lang="en">Analyticity: one platform for traffic data</span><span lang="sk">Analyticity: jedna platforma pre dopravné dáta</span></h4>
-          <p class="lede" lang="en">What began as my thesis app grew into a platform that brings Waze, police accidents and closures into one map for Czech and Slovak cities, with dashboards and what-if scenarios. It is the data layer under my Ph.D.</p>
-          <p class="lede" lang="sk">Z aplikácie z mojej diplomovky vyrástla platforma, ktorá spája Waze, policajné nehody a uzávierky do jednej mapy pre české a slovenské mestá, s dashboardmi a what-if scenármi. Je dátovou vrstvou pod mojím doktorátom.</p>
+          <p class="lede" lang="en">It began as my master's thesis and now runs in production for Brno. It puts Waze jams and driver reports, accidents from the police and the national traffic centre, and road closures onto one OpenStreetMap road network, with a map, dashboards and case studies on top. It is the data layer under my Ph.D.</p>
+          <p class="lede" lang="sk">Začalo to ako moja diplomovka a dnes to beží v prevádzke pre Brno. Zápchy a hlásenia vodičov z Waze, nehody od polície a z Národného dopravného informačného centra aj uzávierky premieta na jednu cestnú sieť z OpenStreetMap a nad tým stavia mapu, dashboardy a prípadové štúdie. Je dátovou vrstvou pod mojím doktorátom.</p>
           <figure class="thumb">
-            <img src="assets/analyticity-live.jpg" alt="Analyticity map of Brno with jams coloured from fast to slow, accident and hazard markers, and a side menu with dashboards." loading="lazy" width="1440" height="900">
-            <figcaption class="mono"><span lang="en">The live app, Brno</span><span lang="sk">Živá aplikácia, Brno</span></figcaption>
+            <img src="assets/analyticity-live.jpg" alt="Analyticity map of Brno for 12–18 October 2026: jams on road sections coloured from occasional to critical, clusters of accidents by severity, and full and partial closures, with a legend and a side menu." loading="lazy" width="1440" height="900">
+            <figcaption class="mono"><span lang="en">The live map, the week the Pisárky tunnel closed</span><span lang="sk">Živá mapa, týždeň uzavretia Pisáreckého tunela</span></figcaption>
           </figure>
+          <div class="gallery g3">
+            <figure>
+              <img src="assets/analyticity-dashboard.jpg" alt="Dashboard overview: traffic jams, jam-hours, accidents and hazard reports compared with the previous period, with daily bars and the streets with the most delay." loading="lazy" width="1440" height="750">
+              <figcaption class="mono"><span lang="en">Dashboard</span><span lang="sk">Dashboard</span></figcaption>
+            </figure>
+            <figure>
+              <img src="assets/analyticity-case.jpg" alt="Case study 'Pisárky without its tunnels': key findings such as +71 % jams within 3 km of the tunnels, and a table of contents." loading="lazy" width="1440" height="900">
+              <figcaption class="mono"><span lang="en">Case study: Pisárky without its tunnels</span><span lang="sk">Prípadová štúdia: Pisárky bez tunelov</span></figcaption>
+            </figure>
+            <figure>
+              <img src="assets/analyticity-case-map.jpg" alt="Map of the change in jams around the closed tunnels, red where jams lasted longer and blue where shorter, next to a ranking of streets by jammed kilometre-hours." loading="lazy" width="1400" height="1182">
+              <figcaption class="mono"><span lang="en">Where the jams moved</span><span lang="sk">Kam sa presunuli zápchy</span></figcaption>
+            </figure>
+          </div>
           <details class="more">
             <summary><span class="closed-label"><span lang="en">Read more, and who built what</span><span lang="sk">Čítať viac a kto čo postavil</span></span><span class="open-label"><span lang="en">Show less</span><span lang="sk">Zobraziť menej</span></span></summary>
             <div>
-              <p lang="en">The platform collects Waze jams and alerts, police accident records and national closure feeds, aligns them in space and time, and serves them to a map and dashboards. It is a team effort that grows through theses I supervise:</p>
-              <p lang="sk">Platforma zbiera zápchy a hlásenia z Waze, policajné záznamy o nehodách a celoštátne dáta o uzávierkach, zosúlaďuje ich v priestore a čase a posiela do mapy a dashboardov. Je to tímová práca, ktorá rastie cez záverečné práce, ktoré vediem:</p>
+              <p lang="en">It started with one question: which street is that jam on? Brno receives a constant stream of Waze jams and alerts through the Waze for Cities programme, but a jam is a line drawn by an app, not a street in the city's register. In my master's thesis I matched every event to segments of the municipal street network and built an app on top, where you pick a street or a route and see the jams, delays and incidents there over a whole year. The city published it on data.brno.cz, the thesis won the Dean's Prize and the Professional Public Prize at Excel@FIT 2024, and the matching method became my first paper (SCSP 2025). Code and text were written without AI assistants.</p>
+              <p lang="sk">Začalo to jednou otázkou: na ktorej ulici je tá zápcha? Brno dostáva cez program Waze for Cities nepretržitý prúd zápch a hlásení, no zápcha je čiara z aplikácie, nie ulica z mestského registra. V diplomovke som každú udalosť priradila k úsekom mestskej uličnej siete a postavila nad tým aplikáciu, v ktorej si vyberiete ulicu alebo trasu a vidíte zápchy, zdržania a udalosti na nej za celý rok. Mesto ju zverejnilo na data.brno.cz, diplomovka získala Cenu dekana a Cenu odbornej verejnosti na Excel@FIT 2024 a metóda párovania sa stala mojím prvým článkom (SCSP 2025). Kód aj text vznikli bez AI asistentov.</p>
+              <figure>
+                <img src="assets/waze-app.jpg" alt="The master's thesis app on data.Brno: map of Brno with street segments coloured by congestion and clusters of jam counts." loading="lazy" width="651" height="431">
+                <figcaption class="mono"><span lang="en">Where it started: the thesis app on data.brno.cz</span><span lang="sk">Kde to začalo: aplikácia z diplomovky na data.brno.cz</span></figcaption>
+              </figure>
+              <p lang="en">Today the data arrive on their own: the Waze feed every minute, closures and accidents pushed by the national traffic information centre (NDIC) as they happen, and police accident statistics daily, with history back to 2016. Each source has its own extractor and transformer (Quarkus services talking over Kafka); everything lands in the city's TimescaleDB + PostGIS database, where an event linker connects related events, such as an accident and the jam it caused. A FastAPI back end serves the map, dashboards, case studies and raw tables, and the React front end speaks Czech, Slovak and English.</p>
+              <p lang="sk">Dnes dáta prichádzajú samé: feed z Waze každú minútu, uzávierky a nehody z Národného dopravného informačného centra (NDIC) hneď, ako vzniknú, a štatistiky nehôd polície denne, s históriou od roku 2016. Každý zdroj má vlastný extraktor a transformátor (služby v Quarkuse, ktoré si posielajú správy cez Kafku); všetko končí v databáze mesta (TimescaleDB + PostGIS), kde event linker spája súvisiace udalosti, napríklad nehodu a zápchu, ktorú spôsobila. Backend vo FastAPI obsluhuje mapu, dashboardy, prípadové štúdie aj surové tabuľky a frontend v Reacte hovorí česky, slovensky a anglicky.</p>
+              <p lang="en">Case studies turn one event into a story whose numbers can be checked. The first follows the six-week closure of the Pisárky and Hlinky tunnels in autumn 2026: where the jams moved, which routes took the traffic, and whether the change is bigger than the usual difference between two ordinary weeks. A live version recomputes it on current data.</p>
+              <p lang="sk">Prípadové štúdie robia z jednej udalosti príbeh s overiteľnými číslami. Prvá sleduje šesťtýždňovú uzávierku Pisáreckého tunela a tunela Hlinky na jeseň 2026: kam sa presunuli zápchy, ktoré trasy prevzali dopravu a či je zmena väčšia, než sa bežne líšia dva obyčajné týždne. Živá verzia ju prepočíta na aktuálnych dátach.</p>
+              <p lang="en">Every city gets its own database, so another municipality can be added through configuration. Students get a personal API key and a documented way to set up a local database with a sample of the data. The platform is a team effort that grows through theses I supervise:</p>
+              <p lang="sk">Každé mesto má vlastnú databázu, takže ďalšia obec sa dá pridať konfiguráciou. Študenti dostanú osobný API kľúč a zdokumentovaný postup, ako si postaviť lokálnu databázu so vzorkou dát. Platforma je tímová práca, ktorá rastie cez záverečné práce, ktoré vediem:</p>
               <ul>
                 <li><b>Štěpán Bakaj</b> · <span lang="en">event-driven ingestion of multiple sources (Kafka, Quarkus)</span><span lang="sk">udalosťami riadený zber z viacerých zdrojov (Kafka, Quarkus)</span></li>
                 <li><b>Patrik Haas</b> · <span lang="en">support for any municipality, each city in its own containers</span><span lang="sk">podpora ľubovoľnej obce, každé mesto vo vlastných kontajneroch</span></li>
                 <li><b>Anna Shevchenko</b> · <span lang="en">front end redesigned around usability testing</span><span lang="sk">frontend prepracovaný na základe testovania použiteľnosti</span></li>
                 <li><b>Maksim Dubrovin</b>, <b>Veronika Šimková</b> · <span lang="en">accident analysis</span><span lang="sk">analýza nehôd</span></li>
                 <li><b>Matyáš Strelec</b> · <span lang="en">routing server</span><span lang="sk">routovací server</span></li>
-                <li><b>Adam Kaňkovský</b> · <span lang="en">closure simulation (II.3)</span><span lang="sk">simulácia uzávierok (II.3)</span></li>
+                <li><b>Adam Kaňkovský</b> · <span lang="en">closure simulation (II.2)</span><span lang="sk">simulácia uzávierok (II.2)</span></li>
               </ul>
-              <p lang="en">My part is the core API and data model, keeping the pieces fitting together, and using the platform for my own research.</p>
-              <p lang="sk">Mojou časťou je jadro API a dátový model, zladenie celku a využitie platformy vo vlastnom výskume.</p>
+              <p lang="en">My part is the core: the API and data model, running the whole stack on the faculty server, the case studies and the documentation, keeping the pieces fitting together, and using the platform for my own research.</p>
+              <p lang="sk">Mojou časťou je jadro: API a dátový model, prevádzka celého stacku na fakultnom serveri, prípadové štúdie a dokumentácia, zladenie celku a využitie platformy vo vlastnom výskume.</p>
             </div>
           </details>
         </div>
@@ -593,10 +587,10 @@
           <div><dt><span lang="en">When</span><span lang="sk">Kedy</span></dt><dd>2025 – 2026</dd></div>
           <div><dt><span lang="en">My part</span><span lang="sk">Moja úloha</span></dt><dd><span lang="en">Research lead, validation, paper. The pipeline is A. Kaňkovský's master's thesis, which I supervised.</span><span lang="sk">Vedenie výskumu, validácia, článok. Pipeline je diplomovka A. Kaňkovského, ktorú som viedla.</span></dd></div>
           <div><dt><span lang="en">Built with</span><span lang="sk">Technológie</span></dt><dd>Python, AequilibraE, OpenStreetMap, FastAPI</dd></div>
-          <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="https://github.com/analyticity/traffic-closures-sim">GitHub</a><a href="#papers">Informatics 2026</a></dd></div>
+          <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="https://github.com/analyticity/simulations">GitHub</a><a href="#papers">Informatics 2026</a><a href="assets/poster-informatics-2026.pdf"><span lang="en">Poster (PDF)</span><span lang="sk">Poster (PDF)</span></a></dd></div>
         </dl>
         <div class="main">
-          <span class="no">II.3</span>
+          <span class="no">II.2</span>
           <h4><span lang="en">Closing a street on paper first</span><span lang="sk">Uzavrieť ulicu najprv na papieri</span></h4>
           <p class="lede" lang="en">A traffic model of a whole city built from public data only, used to predict where traffic goes when a street closes, and checked against the detours the road authority actually prescribed.</p>
           <p class="lede" lang="sk">Dopravný model celého mesta postavený len z verejných dát, ktorý predpovedá, kam sa doprava presunie pri uzávierke, overený na obchádzkach, ktoré správca ciest naozaj nariadil.</p>
@@ -608,16 +602,20 @@
             <div>
               <p lang="en">The pipeline was built by <b>Adam Kaňkovský</b> in his master's thesis, which I supervised; I led the research around it, the validation and the paper. It assembles the OpenStreetMap network, commuting flows from the census and mobile-network statistics, calibrates against the national traffic count, then closes a street and reassigns the traffic.</p>
               <p lang="sk">Pipeline postavil <b>Adam Kaňkovský</b> vo svojej diplomovke, ktorú som viedla; ja som viedla výskum okolo nej, validáciu a článok. Zostaví sieť z OpenStreetMap, dochádzku zo sčítania a štatistiky mobilného operátora, nakalibruje sa na celoštátne sčítanie dopravy a potom uzavrie ulicu a dopravu prerozdelí.</p>
-              <p lang="en">The detours prescribed by the road authority matched well. Waze jam reports from the same closures did not confirm the ranking, which is useful too: the model tells you <i>where</i> traffic goes, not exactly <i>how much</i>.</p>
-              <p lang="sk">Obchádzky nariadené správcom ciest sedeli dobre. Hlásenia zápch z Waze z tých istých uzávierok poradie nepotvrdili, čo je tiež užitočné: model povie, <i>kam</i> sa doprava presunie, nie presne <i>koľko</i>.</p>
+              <p lang="en">The detours prescribed by the road authority matched well: in 7 of 8 closures the detour street was in the model's top 10 %, where chance would give 2 of 8. Across 19 closures, streets predicted to gain traffic also got slightly more Waze jams, but only once the other closures active at the same time were modelled too. Volumes on single roads are still about 46 % off, so the model tells you <i>which streets</i> take the traffic, not exactly <i>how many cars</i>.</p>
+              <p lang="sk">Obchádzky nariadené správcom ciest sedeli dobre: v 7 z 8 uzávierok bola ulica obchádzky v top 10 % modelu, kým náhoda by dala 2 z 8. Naprieč 19 uzávierkami mali ulice, kam model posiela viac dopravy, aj o niečo viac zápch z Waze, ale len keď sa spolu modelovali aj ostatné uzávierky platné v tom istom čase. Objemy na jednotlivých cestách sa ešte líšia asi o 46 %, takže model povie, <i>ktoré ulice</i> dopravu preberú, nie presne <i>koľko áut</i>.</p>
               <ul class="numbers">
                 <li><b>36 552</b><span lang="en">road links, Brno</span><span lang="sk">úsekov ciest, Brno</span></li>
                 <li><b>7 / 8</b><span lang="en">closures: detour in top 10 %</span><span lang="sk">uzávierok: obchádzka v top 10 %</span></li>
-                <li><b>3</b><span lang="en">cities tested</span><span lang="sk">overené mestá</span></li>
+                <li><b>19</b><span lang="en">closures vs. Waze</span><span lang="sk">uzávierok vs. Waze</span></li>
               </ul>
               <figure>
                 <img src="assets/model-vs-waze.jpg" alt="Two maps side by side: where the model predicts traffic will move, and where Waze users reported more jams during the same closure." loading="lazy" width="1600" height="571">
-                <figcaption class="mono"><span lang="en">The same closure from two sources: (a) model, (b) Waze. From Ondrušková, Kaňkovský, Hynek, Burget (2026, submitted).</span><span lang="sk">Tá istá uzávierka z dvoch zdrojov: (a) model, (b) Waze. Z článku Ondrušková, Kaňkovský, Hynek, Burget (2026, podaný).</span></figcaption>
+                <figcaption class="mono"><span lang="en">The same closure from two sources: (a) model, (b) Waze. From Ondrušková, Kaňkovský, Hynek, Burget, Informatics 2026.</span><span lang="sk">Tá istá uzávierka z dvoch zdrojov: (a) model, (b) Waze. Z článku Ondrušková, Kaňkovský, Hynek, Burget, Informatics 2026.</span></figcaption>
+              </figure>
+              <figure>
+                <img src="assets/poster-informatics-2026.jpg" alt="Conference poster 'Macroscopic Modelling of Traffic Reassignment During Road Closures Using Public Data': introduction, method, the modelling pipeline, a map of the modelled change after the I/42 closure, results and conclusions." loading="lazy" width="1600" height="900">
+                <figcaption class="mono"><span lang="en">The poster for Informatics 2026, Poprad, 18–20 November.</span><span lang="sk">Poster na Informatics 2026, Poprad, 18. – 20. novembra.</span> <a href="assets/poster-informatics-2026.pdf">PDF</a></figcaption>
               </figure>
             </div>
           </details>
@@ -632,7 +630,7 @@
           <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="demo/police-waze/"><span lang="en">Live demo</span><span lang="sk">Živé demo</span></a><a href="demo/police-waze/app.py"><span lang="en">Demo source</span><span lang="sk">Zdrojový kód dema</span></a></dd></div>
         </dl>
         <div class="main">
-          <span class="no">II.4</span>
+          <span class="no">II.3</span>
           <h4><span lang="en">When are two reports the same accident?</span><span lang="sk">Kedy sú dve hlásenia tá istá nehoda?</span></h4>
           <p class="lede" lang="en">A Streamlit tool for building ground truth: each police accident record next to every Waze report within a radius and time window, and an annotator decides which ones match.</p>
           <p class="lede" lang="sk">Nástroj v Streamlite na tvorbu referenčných dát: každý policajný záznam o nehode vedľa všetkých hlásení z Waze v danom okruhu a čase a anotátor rozhodne, ktoré k sebe patria.</p>
@@ -661,18 +659,31 @@
           <div><dt><span lang="en">Links</span><span lang="sk">Odkazy</span></dt><dd><a href="http://lotrando.fit.vutbr.cz:8300/demonstrators/"><span lang="en">Live catalogue</span><span lang="sk">Živý katalóg</span></a></dd></div>
         </dl>
         <div class="main">
-          <span class="no">II.5</span>
+          <span class="no">II.4</span>
           <h4><span lang="en">A catalogue of sustainability projects across ten universities</span><span lang="sk">Katalóg projektov udržateľnosti naprieč desiatimi univerzitami</span></h4>
           <p class="lede" lang="en">For the international EULiST alliance I built Sustainability Demonstrators, a public catalogue where universities publish their sustainability projects, from campus photovoltaics to insect meadows, filterable by UN Sustainable Development Goal.</p>
           <p class="lede" lang="sk">Pre medzinárodnú alianciu EULiST som postavila Sustainability Demonstrators, verejný katalóg, kde univerzity zverejňujú svoje projekty udržateľnosti, od fotovoltiky na kampuse po kvetinové lúky, s filtrom podľa cieľov udržateľného rozvoja OSN.</p>
           <figure class="thumb">
-            <img src="assets/eulist.jpg" alt="Sustainability Demonstrators catalogue: filters for university, status, year and SDG next to cards of university projects with photos." loading="lazy" width="1440" height="900">
+            <img src="assets/eulist.jpg" alt="Sustainability Demonstrators landing page in the EULiST brand: the headline 'Inspiration without borders', an illustration of a green campus, and the strongest focus areas by Sustainable Development Goal." loading="lazy" width="1440" height="900">
+            <figcaption class="mono"><span lang="en">New design in the EULiST brand, 2026</span><span lang="sk">Nový dizajn v štýle EULiST, 2026</span></figcaption>
           </figure>
+          <div class="gallery g3">
+            <figure>
+              <img src="assets/eulist-catalogue.jpg" alt="Demonstrator catalogue: a filter toolbar for SDG, university, status and year above cards of campus projects with photos and status badges." loading="lazy" width="1440" height="1190">
+              <figcaption class="mono"><span lang="en">Catalogue</span><span lang="sk">Katalóg</span></figcaption>
+            </figure>
+            <figure>
+              <img src="assets/eulist-detail.jpg" alt="Project page 'Wildflower and Insect Meadows on Campus Grounds' at Leibniz University Hannover, with status, years, a photo and an at-a-glance panel." loading="lazy" width="1440" height="900">
+              <figcaption class="mono"><span lang="en">Project page</span><span lang="sk">Stránka projektu</span></figcaption>
+            </figure>
+          </div>
           <details class="more">
             <summary><span class="closed-label"><span lang="en">Read more</span><span lang="sk">Čítať viac</span></span><span class="open-label"><span lang="en">Show less</span><span lang="sk">Zobraziť menej</span></span></summary>
             <div>
               <p lang="en">Visitors can search the catalogue and filter it by university, status, year and main or secondary SDG; each project has its own page with a gallery, and a statistics page aggregates projects by goal, university and status. Behind it, staff manage the projects and the reference data (universities, SDGs, statuses) through a role-based back office, and only approved projects are public.</p>
               <p lang="sk">Návštevníci môžu katalóg prehľadávať a filtrovať podľa univerzity, stavu, roku a hlavného či vedľajšieho cieľa SDG; každý projekt má vlastnú stránku s galériou a stránka štatistík ich agreguje podľa cieľa, univerzity a stavu. V zázemí spravujú projekty aj číselníky (univerzity, SDG, stavy) poverení ľudia cez administráciu s rolami a verejné sú len schválené projekty.</p>
+              <p lang="en">In autumn 2026 I redesigned it in the alliance's brand: a landing page that shows the strongest focus areas, one filter toolbar for the catalogue, project pages with an at-a-glance panel, and the partner universities' logos.</p>
+              <p lang="sk">Na jeseň 2026 som ho prerobila do vizuálu aliancie: úvodná stránka s najsilnejšími oblasťami, jeden panel filtrov pre katalóg, stránky projektov s prehľadom v skratke a logá partnerských univerzít.</p>
               <p lang="en">It is a Django application (templates, forms, migrations) with image uploads and thumbnails, deployed with Docker Compose behind Nginx, which serves static and media files.</p>
               <p lang="sk">Ide o aplikáciu v Djangu (šablóny, formuláre, migrácie) s nahrávaním obrázkov a náhľadmi, nasadenú cez Docker Compose za Nginxom, ktorý servíruje statické a mediálne súbory.</p>
             </div>
@@ -688,14 +699,15 @@
       </div>
       <ol class="refs">
         <li>
-          <span class="when mono">2026 · <span class="status"><span lang="en">submitted, decision end of October</span><span lang="sk">podaný, rozhodnutie koncom októbra</span></span></span>
+          <span class="when mono">2026 · <span class="status"><span lang="en">poster, 18–20 November</span><span lang="sk">poster, 18. – 20. novembra</span></span></span>
           <div>
-            <p class="title">Predicting Traffic Reassignment During Road Closures from Open Data</p>
+            <p class="title">Macroscopic Modelling of Traffic Reassignment During Road Closures Using Public Data</p>
             <p class="who"><b>M. Ondrušková</b>, A. Kaňkovský, J. Hynek, R. Burget</p>
-            <p class="where"><em>Informatics 2026</em>, Poprad, Slovakia</p>
+            <p class="where"><em>2026 IEEE 18th International Scientific Conference on Informatics (Informatics 2026)</em>, Poprad, Slovakia</p>
+            <div class="links mono"><a href="assets/poster-informatics-2026.pdf"><span lang="en">Poster (PDF)</span><span lang="sk">Poster (PDF)</span></a><a href="https://github.com/analyticity/simulations">github.com/analyticity/simulations</a></div>
             <details>
               <summary class="mono">Abstract</summary>
-              <p>Before a street is closed, a city needs to know which other streets will carry its traffic. We present a pipeline that builds a macroscopic traffic model of a city from public data alone (an OpenStreetMap network, commuting demand from the census, and mobile-network statistics that split external demand across the gateways), calibrated against the national traffic census under static user equilibrium. Its closure predictions are tested against a reference that is equally public: the detour route the road authority prescribes when it orders a closure. For Brno (36 552 links, 493 462 vehicle-trips per day), a prescribed detour street ranked within the top 10 % of the streets that carry modelled traffic in seven of eight closures (p = 0.008), whereas crowdsourced congestion reports did not corroborate the ranking. The model reproduces the ordering of roads (Spearman ρ = 0.93) but not individual link volumes, which confines its use to where traffic moves rather than how much. A new city needs one configuration directory.</p>
+              <p>Before a street is closed, a city needs to know which other streets will carry its traffic. We present a pipeline that builds a macroscopic traffic model of a city from public data alone (an OpenStreetMap network, commuting demand from the census, and mobile-network statistics that split external demand across the gateways), calibrated against the national traffic census under static user equilibrium. Its closure predictions are tested against a reference that is equally public: the detour route the road authority prescribes when it orders a closure. For Brno (36 552 links, 493 462 vehicle-trips per day), a prescribed detour street ranked within the top 10 % of the streets that carry modelled traffic in seven of eight closures (p &lt; 0.001), and across 19 closures crowdsourced congestion reports corroborate the prediction weakly (mean ρ = 0.09, p = 0.009), provided that concurrent closures are modelled together. The model reproduces the ordering of roads (Spearman ρ = 0.93) but not individual link volumes, which confines its use to where traffic moves rather than how much. A new city needs one configuration directory.</p>
             </details>
           </div>
         </li>
@@ -762,8 +774,8 @@
           <span class="when">2021 – 2024</span>
           <img class="logo" src="assets/logos/fit.png" alt="FIT VUT" width="44" height="44">
           <div><b>Ing.</b>, <span lang="en">Information Systems and Databases</span><span lang="sk">Informačné systémy a databázy</span><span class="where">FIT VUT</span>
-            <p lang="en">Thesis: Waze traffic data analysis and visualisation (<a href="#waze">II.1</a>). Dean's Prize; Professional Public Prize, Excel@FIT 2024. <span class="stamp">no AI</span></p>
-            <p lang="sk">Diplomová práca: analýza a vizualizácia dopravných dát z Waze (<a href="#waze">II.1</a>). Cena dekana; Cena odbornej verejnosti, Excel@FIT 2024. <span class="stamp">bez AI</span></p></div>
+            <p lang="en">Thesis: Waze traffic data analysis and visualisation (<a href="#analyticity">II.1</a>). Dean's Prize; Professional Public Prize, Excel@FIT 2024. <span class="stamp">no AI</span></p>
+            <p lang="sk">Diplomová práca: analýza a vizualizácia dopravných dát z Waze (<a href="#analyticity">II.1</a>). Cena dekana; Cena odbornej verejnosti, Excel@FIT 2024. <span class="stamp">bez AI</span></p></div>
         </li>
         <li>
           <span class="when"><span class="verify">2018 – 2021</span></span>
@@ -787,9 +799,9 @@
     <ul class="core">
       <li><h4>Python</h4><span class="with mono">pandas, PySpark, Jupyter</span><p lang="en">Where almost everything starts: exploratory analysis, recurring calculations over large logs, and the models behind my research.</p><p lang="sk">Tu začína takmer všetko: prieskumná analýza, opakované výpočty nad rozsiahlymi logmi a modely v mojom výskume.</p><span class="used mono">I.1 · I.2 · II</span></li>
       <li><h4>SQL &amp; Snowflake</h4><span class="with mono"><span lang="en">data models, semantic layers</span><span lang="sk">dátové modely, sémantické vrstvy</span></span><p lang="en">Tables at a clear grain, metrics defined once, and semantic layers that Cortex AI answers from.</p><p lang="sk">Tabuľky s jasnou granularitou, metriky definované raz a sémantické vrstvy, z ktorých odpovedá Cortex AI.</p><span class="used mono">I.1 · I.2</span></li>
-      <li><h4>Streamlit</h4><span class="with mono"><span lang="en">apps, Streamlit in Snowflake</span><span lang="sk">aplikácie, Streamlit in Snowflake</span></span><p lang="en">My way of turning an analysis into a product people use on their own, from business reports to research tools.</p><p lang="sk">Môj spôsob, ako z analýzy spraviť produkt, ktorý ľudia používajú sami, od biznisových reportov po výskumné nástroje.</p><span class="used mono">I.1 · I.2 · II.4</span></li>
+      <li><h4>Streamlit</h4><span class="with mono"><span lang="en">apps, Streamlit in Snowflake</span><span lang="sk">aplikácie, Streamlit in Snowflake</span></span><p lang="en">My way of turning an analysis into a product people use on their own, from business reports to research tools.</p><p lang="sk">Môj spôsob, ako z analýzy spraviť produkt, ktorý ľudia používajú sami, od biznisových reportov po výskumné nástroje.</p><span class="used mono">I.1 · I.2 · II.3</span></li>
       <li><h4>Tableau</h4><span class="with mono"><span lang="en">dashboards</span><span lang="sk">dashboardy</span></span><p lang="en">Dashboards for stakeholders, with every metric documented so that numbers mean the same thing to everyone.</p><p lang="sk">Dashboardy pre stakeholderov s každou metrikou zdokumentovanou, aby čísla znamenali pre všetkých to isté.</p><span class="used mono">Seznam</span></li>
-      <li><h4>Geodata</h4><span class="with mono">PostGIS, GeoPandas, OpenStreetMap</span><p lang="en">Spatial joins, map matching and road networks: the backbone of my traffic research.</p><p lang="sk">Priestorové spájanie, map matching a cestné siete: chrbtová kosť môjho dopravného výskumu.</p><span class="used mono">II.1 – II.4</span></li>
+      <li><h4>Geodata</h4><span class="with mono">PostGIS, GeoPandas, OpenStreetMap</span><p lang="en">Spatial joins, map matching and road networks: the backbone of my traffic research.</p><p lang="sk">Priestorové spájanie, map matching a cestné siete: chrbtová kosť môjho dopravného výskumu.</p><span class="used mono">II.1 – II.3</span></li>
       <li><h4>AI at work</h4><span class="with mono"><span lang="en">Claude Code, Cursor, own agents</span><span lang="sk">Claude Code, Cursor, vlastní agenti</span></span><p lang="en">I build my own agents and skills to automate the repetitive parts, so more time goes to the actual question.</p><p lang="sk">Staviam si vlastných agentov a skills na automatizáciu opakujúcej sa práce, aby viac času zostalo na samotnú otázku.</p><span class="used mono">Seznam</span></li>
     </ul>
     <ul class="more-tools">
@@ -817,7 +829,7 @@
 <footer class="mono">
   <div class="wrap">
     <span>© 2026 Magdaléna Ondrušková</span>
-    <span><span lang="en">Fig. 1 drawn from the model in</span><span lang="sk">Obr. 1 je vykreslený z modelu v</span> <a href="https://github.com/analyticity/traffic-closures-sim">traffic-closures-sim</a> <span lang="en">(pipeline by A. Kaňkovský)</span><span lang="sk">(pipeline: A. Kaňkovský)</span> · <span lang="en">map data</span><span lang="sk">mapové dáta</span> © OpenStreetMap</span>
+    <span><span lang="en">Fig. 1 drawn from the model in</span><span lang="sk">Obr. 1 je vykreslený z modelu v</span> <a href="https://github.com/analyticity/simulations">simulations</a> <span lang="en">(pipeline by A. Kaňkovský)</span><span lang="sk">(pipeline: A. Kaňkovský)</span> · <span lang="en">map data</span><span lang="sk">mapové dáta</span> © OpenStreetMap</span>
   </div>
 </footer>
 
